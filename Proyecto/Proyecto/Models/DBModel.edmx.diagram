@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e629de02b0614be5b3d95178ee4b801f" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.bodega" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Categoria" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.detalle_productos" Width="1.5" PointX="9.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.estado" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.estante" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Pedido" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Producto" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Proveedore" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Tipo_Usuario" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Usuario" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="Models.FK_Bodega" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_cate_prod" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_estante_cate" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_id_det_prod" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_id_product" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_id_prov2" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.fk_tipo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

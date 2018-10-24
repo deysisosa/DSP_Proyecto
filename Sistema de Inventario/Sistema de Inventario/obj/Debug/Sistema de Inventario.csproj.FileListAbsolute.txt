@@ -1,0 +1,17 @@
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.exe.config
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.exe
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.pdb
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Bodega.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Categorias.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.CrearU.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Estantes.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Inicio.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Login.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Panel_Control.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Properties.Resources.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Proveedores.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csproj.GenerateResource.Cache
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.exe
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.pdb
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Productos.resources
+C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csprojResolveAssemblyReference.cache
