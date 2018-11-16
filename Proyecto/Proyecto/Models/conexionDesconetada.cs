@@ -53,51 +53,67 @@ namespace Proyecto.Models
             /*Establecemos la relacion de llaves foraneas entre las tablas,
             verifique la sintaxis de cada una de ellas*/
             ForeignKeyConstraint fk1_cat_pro;
+            ForeignKeyConstraint fk1_cat_estan;
+            ForeignKeyConstraint fk1_est_bod;
+            ForeignKeyConstraint fk1_bod_pro;
+            ForeignKeyConstraint fk1_estad_pro;
+            ForeignKeyConstraint fk1_prov_pro;
+            ForeignKeyConstraint fk1_pro_depro;
+            ForeignKeyConstraint fk1_ped_depro;
+            ForeignKeyConstraint fk1_usu_ped;
+            ForeignKeyConstraint fk1_tip_usu;
+
             fk1_cat_pro = new
            ForeignKeyConstraint(DataSetPrincipal.Tables["Categoria"].Columns["id_categoria"],
            DataSetPrincipal.Tables["Productos"].Columns["id_categoria"]);
             DataSetPrincipal.Tables["Productos"].Constraints.Add(fk1_cat_pro);
-            ForeignKeyConstraint fk1_sup_pro;
-            fk1_cat_est = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Suppliers"].Columns["SupplierID"],
-           DataSetPrincipal.Tables["Products"].Columns["SupplierID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_sup_pro);
-            fk1_cat_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Categories"].Columns["CategoryID"],
-           DataSetPrincipal.Tables["Products"].Columns["CategoryID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_cat_pro);
-            ForeignKeyConstraint fk1_sup_pro;
-            fk1_sup_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Suppliers"].Columns["SupplierID"],
-           DataSetPrincipal.Tables["Products"].Columns["SupplierID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_sup_pro);
-            fk1_cat_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Categories"].Columns["CategoryID"],
-           DataSetPrincipal.Tables["Products"].Columns["CategoryID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_cat_pro);
-            ForeignKeyConstraint fk1_sup_pro;
-            fk1_sup_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Suppliers"].Columns["SupplierID"],
-           DataSetPrincipal.Tables["Products"].Columns["SupplierID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_sup_pro);
-            fk1_cat_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Categories"].Columns["CategoryID"],
-           DataSetPrincipal.Tables["Products"].Columns["CategoryID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_cat_pro);
-            ForeignKeyConstraint fk1_sup_pro;
-            fk1_sup_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Suppliers"].Columns["SupplierID"],
-           DataSetPrincipal.Tables["Products"].Columns["SupplierID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_sup_pro);
-            fk1_cat_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Categories"].Columns["CategoryID"],
-           DataSetPrincipal.Tables["Products"].Columns["CategoryID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_cat_pro);
-            ForeignKeyConstraint fk1_sup_pro;
-            fk1_sup_pro = new
-           ForeignKeyConstraint(DataSetPrincipal.Tables["Suppliers"].Columns["SupplierID"],
-           DataSetPrincipal.Tables["Products"].Columns["SupplierID"]);
-            DataSetPrincipal.Tables["Products"].Constraints.Add(fk1_sup_pro);
+
+
+            fk1_cat_estan = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Categoria"].Columns["id_categoria"],
+           DataSetPrincipal.Tables["estante"].Columns["id_categoria"]);
+            DataSetPrincipal.Tables["estante"].Constraints.Add(fk1_cat_estan);
+
+            fk1_est_bod = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["estante"].Columns["id_estante"],
+           DataSetPrincipal.Tables["bodega"].Columns["id_estante"]);
+            DataSetPrincipal.Tables["bodega"].Constraints.Add(fk1_est_bod);
+
+            fk1_bod_pro = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["bodega"].Columns["id_bodega"],
+           DataSetPrincipal.Tables["Producto"].Columns["id_bodega"]);
+            DataSetPrincipal.Tables["Producto"].Constraints.Add(fk1_bod_pro);
+
+            fk1_estad_pro = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["estado"].Columns["id_Estado"],
+           DataSetPrincipal.Tables["Productos"].Columns["estado"]);
+            DataSetPrincipal.Tables["Productos"].Constraints.Add(fk1_estad_pro);
+
+
+            fk1_prov_pro = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Proveedores"].Columns["id_proveed"],
+           DataSetPrincipal.Tables["Productos"].Columns["id_proveedor"]);
+            DataSetPrincipal.Tables["Productos"].Constraints.Add(fk1_prov_pro);
+
+            fk1_pro_depro = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Productos"].Columns["id_producto"],
+           DataSetPrincipal.Tables["detalle_productos"].Columns["id_producto"]);
+            DataSetPrincipal.Tables["detalle_productos"].Constraints.Add(fk1_pro_depro);
+
+            fk1_ped_depro = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Pedido"].Columns["id_pedido"],
+           DataSetPrincipal.Tables["detalle_productos"].Columns["N_pedido"]);
+            DataSetPrincipal.Tables["detalle_productos"].Constraints.Add(fk1_ped_depro);
+
+            fk1_usu_ped  = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Usuarios"].Columns["Nombre_Usuario"],
+           DataSetPrincipal.Tables["Pedido"].Columns["Nombre_Usuario"]);
+            DataSetPrincipal.Tables["Pedido"].Constraints.Add(fk1_usu_ped);
+
+            fk1_tip_usu = new
+           ForeignKeyConstraint(DataSetPrincipal.Tables["Tipo_Usuario"].Columns["id_Tipo"],
+           DataSetPrincipal.Tables["Usuarios"].Columns["TipoU"]);
+            DataSetPrincipal.Tables["Usuarios"].Constraints.Add(fk1_tip_usu);
         }
         public void cargarTabla(String nombreTabla, String primaryKey)
         {
@@ -131,7 +147,7 @@ namespace Proyecto.Models
         {
             DataTable table = ds.Tables["Products"];
             DataRow row = table.NewRow();
-            row["ProductName"] = ProductName;
+            row["Id_Productos"] = ProductName;
             row["SupplierID"] = Proveedores;
             row["CategoryID"] = Categorias;
             row["QuantityPerUnit"] = QuantityPerUnit;
@@ -148,7 +164,7 @@ namespace Proyecto.Models
             }
             return 0;
         }
-        public Product mostrardatos(int productID, DataSet ds)
+        public Productos mostrardatos(int productID, DataSet ds)
         {
             DataView vistaFiltro = new DataView(ds.Tables["Products"]);
             vistaFiltro.RowFilter = "ProductID = " + productID;

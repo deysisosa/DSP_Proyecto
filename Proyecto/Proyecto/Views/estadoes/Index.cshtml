@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Proyecto.estado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Estado</h2>
+
+<p>
+    @Html.ActionLink("Crear Estado", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado1)
+        </td>
+        <td>
+            @Html.ActionLink("Editar Estado", "Edit", new { id=item.Id_Estado }) |
+            @Html.ActionLink("Detalle de Estado", "Details", new { id=item.Id_Estado }) |
+            @Html.ActionLink("Eliminar Estado", "Delete", new { id=item.Id_Estado })
+        </td>
+    </tr>
+}
+
+</table>

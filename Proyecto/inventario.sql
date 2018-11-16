@@ -195,4 +195,72 @@ END
 GO
 
 
-/*select* from Usuarios*/
+
+--Tipo de Usuario
+INSERT INTO Tipo_Usuario(id_tipo, Tipo_Usuario)
+VALUES (2,'Administrador');
+INSERT INTO Tipo_Usuario(id_tipo, Tipo_Usuario)
+VALUES (3,'Empleado');
+--Usuario
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Juan', 'García','JuanGarcia','1554', 3);
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Veronica', 'Fuentes','VeroFuen','9684', 2);
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Luis', 'Castillo','LuisCasti','5160', 3);
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Miguel', 'Hernandez','MiguelHer','9678', 3);
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Rosa', 'Cortes','RosaCortes','4086', 3);
+INSERT INTO Usuarios(Nombre, Apellido, Nombre_Usuario, Contraseña, TipoU)
+VALUES('Monica', 'Cañas','MoniCañas','6504', 3);
+--Proveedores
+INSERT INTO Proveedores(Nombre_Proveedor, Nombre_Contacto, Pais, telefono1, telefono2, correo1, correo2)
+VALUES('Inversiones Apparel','Josselin','El Salvador','2513-2843', '2274-4231','Inversionesapparel@apparel.net','Inversionesapparel@gmail.com');
+INSERT INTO Proveedores(Nombre_Proveedor, Nombre_Contacto, Pais, telefono1, telefono2,correo1)
+VALUES('incalsa','Mariana','El Salvador','2445-7000','2445-7010','info@incalsa.com.sv');
+--Categorias--
+INSERT INTO Categoria(Nombre_categoria)
+VALUES('Camisas');
+INSERT INTO Categoria(Nombre_categoria)
+VALUES('Pantalones');
+INSERT INTO Categoria(Nombre_categoria)
+VALUES('Sacos');
+--Estado--
+INSERT INTO	estado(Id_Estado, Estado)
+VALUES(1,'Activo');
+INSERT INTO	estado(Id_Estado, Estado)
+VALUES(2,'inactivo');
+--Estantes
+INSERT INTO	estante(id_estante, n_estante, id_categoria)
+VALUES(1,'A1', 1);
+INSERT INTO	estante(id_estante, n_estante, id_categoria)
+VALUES(2,'B2', 2);
+INSERT INTO	estante(id_estante, n_estante, id_categoria)
+VALUES(3,'C1', 3);
+--Bodega
+INSERT INTO	bodega(id_bodega, Nombre_Bodega, id_estante)
+VALUES(1,'Bodega Principal 1', 2);
+INSERT INTO	bodega(id_bodega, Nombre_Bodega, id_estante)
+VALUES(2,'Bodega Secundaria 2', 3);
+INSERT INTO	bodega(id_bodega, Nombre_Bodega, id_estante)
+VALUES(3,'Bodega 3',1);
+--Pedido
+INSERT INTO	Pedido(Nombre_Usuario, fecha_corte, fecha_facturacion)
+VALUES('JuanGarcia', '2018-11-13','2018-11-13');
+INSERT INTO	Pedido(Nombre_Usuario, fecha_corte, fecha_facturacion)
+VALUES('VeroFuen', '2018-11-13','2018-11-10');
+INSERT INTO	Pedido( Nombre_Usuario, fecha_corte, fecha_facturacion)
+VALUES('MiguelHer' ,'2018-11-13','2018-11-9');
+--productos
+INSERT INTO	Productos(id_producto,Nombre_producto, Existencias, Precio_venta, Precio_compra, Descripcion, id_categoria, N_pedido,id_proveedor,ubicacion,estado)
+VALUES(1,'Camisa Manga Larga', 3,10.50,11.50,'Talla L ,color azul',3,1,1,2,1 );
+INSERT INTO	Productos(id_producto,Nombre_producto, Existencias, Precio_venta, Precio_compra, Descripcion, id_categoria, N_pedido,id_proveedor,ubicacion,estado)
+VALUES(2,'Pantalon ', 3,19.50,22.56,'color Negro ',2,1,1,2,1 );
+--detalle de Producto
+INSERT INTO	detalle_productos(id_producto,Nombre_producto, Existencia, Precio_venta, Precio_compra, Descripcion, id_categoria, N_pedido,id_proveedor)
+VALUES(1,'Camisa Manga Larga', 3,10.50,11.50,'Talla L ,color azul',3,3,1 );
+INSERT INTO	detalle_productos(id_producto,Nombre_producto, Existencia, Precio_venta, Precio_compra, Descripcion, id_categoria, N_pedido,id_proveedor)
+VALUES(2,'Pantalon ', 3,19.50,22.56,'color Negro ',2,4,1);
+select * from detalle_productos
+

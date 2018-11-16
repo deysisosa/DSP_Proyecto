@@ -1,0 +1,40 @@
+﻿@model Proyecto.bodega
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Bodega</h2>
+
+<h3>Estás seguro que quieres eliminar esto?</h3>
+<div>
+    <h4>bodega</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de Bodega
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Bodega)
+        </dd>
+
+        <dt>
+            Numero de Estante
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estante.n_estante)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

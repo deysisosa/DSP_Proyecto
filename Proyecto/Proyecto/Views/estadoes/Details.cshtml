@@ -1,0 +1,26 @@
+﻿@model Proyecto.estado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle de Estado</h2>
+
+<div>
+    <h4>estado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Estado", "Edit", new { id = Model.Id_Estado }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

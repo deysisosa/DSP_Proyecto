@@ -1,0 +1,104 @@
+﻿@model Proyecto.Productos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Producto</h2>
+
+<h3>Estás seguro que quieres eliminar esto?</h3>
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nombre de producto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_producto)
+        </dd>
+
+        <dt>
+            @Html.Label("Existencias")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Existencias)
+        </dd>
+
+        <dt>
+            @Html.Label("Precio de venta")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_venta)
+        </dd>
+
+        <dt>
+            @Html.Label("Precio de compra")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_compra)
+        </dd>
+
+        <dt>
+            @Html.Label("Descripcion")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.Label("Numero de pedido")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.N_pedido)
+        </dd>
+
+        <dt>
+            @Html.Label("Nombre de Bodega")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bodega.Nombre_Bodega)
+        </dd>
+
+        <dt>
+            @Html.Label("Nombre de categoria")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nombre_categoria)
+        </dd>
+
+        <dt>
+            @Html.Label("Estado")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado1.Estado1)
+        </dd>
+
+        <dt>
+            @Html.Label("Proveedor")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proveedores.Nombre_Proveedor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Producto" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

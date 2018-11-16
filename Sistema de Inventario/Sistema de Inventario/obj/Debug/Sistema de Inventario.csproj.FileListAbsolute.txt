@@ -15,3 +15,17 @@ C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sis
 C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.pdb
 C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Productos.resources
 C:\Users\WILLIAM\Documents\Visual Studio 2013\Projects\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csprojResolveAssemblyReference.cache
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csprojAssemblyReference.cache
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.exe
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.pdb
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.exe.config
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.exe
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\bin\Debug\Sistema de Inventario.pdb
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Bodega.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Categorias.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Estantes.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Productos.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Properties.Resources.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema_de_Inventario.Proveedores.resources
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csproj.GenerateResource.cache
+C:\Users\Daisy De Paz\Desktop\Proyecto_DSP\Sistema de Inventario\Sistema de Inventario\obj\Debug\Sistema de Inventario.csproj.CoreCompileInputs.cache

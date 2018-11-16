@@ -1,0 +1,48 @@
+﻿@model Proyecto.Pedido
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Pedido</h2>
+
+<h3>Estás seguro que quieres eliminar esto?</h3>
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Fecha de corte
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_corte)
+        </dd>
+
+        <dt>
+            Fecha de facturacion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_facturacion)
+        </dd>
+
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuarios.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Pedido" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

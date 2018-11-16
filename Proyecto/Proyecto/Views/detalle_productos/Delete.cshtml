@@ -1,0 +1,96 @@
+﻿@model Proyecto.detalle_productos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Detalle de Producto</h2>
+
+<h3>Estás seguro que quieres eliminar esto?</h3>
+<div>
+    <h4>Detalle de Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de producto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_producto)
+        </dd>
+
+        <dt>
+            Existencia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Existencia)
+        </dd>
+
+        <dt>
+            Precio de venta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_venta)
+        </dd>
+
+        <dt>
+            Precio de compra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_compra)
+        </dd>
+
+        <dt>
+            Descripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            Id de categoria
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_categoria)
+        </dd>
+
+        <dt>
+            Id de proveedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_proveedor)
+        </dd>
+
+        <dt>
+            Usuario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.Nombre_Usuario)
+        </dd>
+
+        <dt>
+            Nombre de producto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Productos.Nombre_producto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Detalle" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

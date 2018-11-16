@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="inventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bodega">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="Nombre_Bodega" Type="varchar" MaxLength="25" />
+          <Property Name="id_estante" Type="int" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_categoria" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="detalle_productos">
+          <Key>
+            <PropertyRef Name="id_detalle_producto" />
+          </Key>
+          <Property Name="id_detalle_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_producto" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre_producto" Type="varchar" MaxLength="50" />
+          <Property Name="Existencia" Type="int" />
+          <Property Name="Precio_venta" Type="float" />
+          <Property Name="Precio_compra" Type="float" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="140" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="N_pedido" Type="int" />
+          <Property Name="id_proveedor" Type="int" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="estante">
+          <Key>
+            <PropertyRef Name="id_estante" />
+          </Key>
+          <Property Name="id_estante" Type="int" Nullable="false" />
+          <Property Name="n_estante" Type="char" MaxLength="15" />
+          <Property Name="id_categoria" Type="int" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="10" />
+          <Property Name="fecha_corte" Type="date" />
+          <Property Name="fecha_facturacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre_producto" Type="varchar" MaxLength="50" />
+          <Property Name="Existencias" Type="int" />
+          <Property Name="Precio_venta" Type="float" />
+          <Property Name="Precio_compra" Type="float" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="140" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="N_pedido" Type="int" />
+          <Property Name="id_proveedor" Type="int" />
+          <Property Name="ubicacion" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Proveedor" Type="varchar" MaxLength="140" />
+          <Property Name="Nombre_Contacto" Type="varchar" MaxLength="140" />
+          <Property Name="Pais" Type="varchar" MaxLength="75" />
+          <Property Name="telefono1" Type="varchar" MaxLength="50" />
+          <Property Name="telefono2" Type="varchar" MaxLength="50" />
+          <Property Name="correo1" Type="varchar" MaxLength="100" />
+          <Property Name="correo2" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="int" Nullable="false" />
+          <Property Name="Tipo_Usuario" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Nombre_Usuario" />
+          </Key>
+          <Property Name="Nombre" Type="varchar" MaxLength="25" />
+          <Property Name="Apellido" Type="varchar" MaxLength="25" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="50" />
+          <Property Name="TipoU" Type="int" />
+        </EntityType>
+        <Association Name="FK_Bodega">
+          <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
+          <End Role="bodega" Type="Self.bodega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estante">
+              <PropertyRef Name="id_estante" />
+            </Principal>
+            <Dependent Role="bodega">
+              <PropertyRef Name="id_estante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cate_prod">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_estado">
+          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_estante_cate">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="estante" Type="Self.estante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="estante">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_det_prod">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="detalle_productos" Type="Self.detalle_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="detalle_productos">
+              <PropertyRef Name="N_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_product">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="detalle_productos" Type="Self.detalle_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalle_productos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_prov2">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pedido">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacion">
+          <End Role="bodega" Type="Self.bodega" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodega">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventarioModelStoreContainer">
+          <EntitySet Name="bodega" EntityType="Self.bodega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detalle_productos" EntityType="Self.detalle_productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estante" EntityType="Self.estante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bodega" Association="Self.FK_Bodega">
+            <End Role="estante" EntitySet="estante" />
+            <End Role="bodega" EntitySet="bodega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cate_prod" Association="Self.FK_cate_prod">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_estado" Association="Self.FK_estado">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_estante_cate" Association="Self.FK_estante_cate">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="estante" EntitySet="estante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_det_prod" Association="Self.FK_id_det_prod">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="detalle_productos" EntitySet="detalle_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_product" Association="Self.FK_id_product">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="detalle_productos" EntitySet="detalle_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_prov2" Association="Self.FK_id_prov2">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pedido" Association="Self.FK_pedido">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo" Association="Self.fk_tipo">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacion" Association="Self.FK_ubicacion">
+            <End Role="bodega" EntitySet="bodega" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="inventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bodega">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Bodega" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="id_estante" Type="Int32" />
+          <NavigationProperty Name="estante" Relationship="Self.FK_Bodega" FromRole="bodega" ToRole="estante" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_ubicacion" FromRole="bodega" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_cate_prod" FromRole="Categoria" ToRole="Productos" />
+          <NavigationProperty Name="estante" Relationship="Self.FK_estante_cate" FromRole="Categoria" ToRole="estante" />
+        </EntityType>
+        <EntityType Name="detalle_productos">
+          <Key>
+            <PropertyRef Name="id_detalle_producto" />
+          </Key>
+          <Property Name="id_detalle_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Existencia" Type="Int32" />
+          <Property Name="Precio_venta" Type="Double" />
+          <Property Name="Precio_compra" Type="Double" />
+          <Property Name="Descripcion" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="N_pedido" Type="Int32" />
+          <Property Name="id_proveedor" Type="Int32" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_id_det_prod" FromRole="detalle_productos" ToRole="Pedido" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_id_product" FromRole="detalle_productos" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Estado1" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_estado" FromRole="estado" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="estante">
+          <Key>
+            <PropertyRef Name="id_estante" />
+          </Key>
+          <Property Name="id_estante" Type="Int32" Nullable="false" />
+          <Property Name="n_estante" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="id_categoria" Type="Int32" />
+          <NavigationProperty Name="bodega" Relationship="Self.FK_Bodega" FromRole="estante" ToRole="bodega" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_estante_cate" FromRole="estante" ToRole="Categoria" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_corte" Type="DateTime" Precision="0" />
+          <Property Name="fecha_facturacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="detalle_productos" Relationship="Self.FK_id_det_prod" FromRole="Pedido" ToRole="detalle_productos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_pedido" FromRole="Pedido" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Existencias" Type="Int32" />
+          <Property Name="Precio_venta" Type="Double" />
+          <Property Name="Precio_compra" Type="Double" />
+          <Property Name="Descripcion" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="N_pedido" Type="Int32" />
+          <Property Name="id_proveedor" Type="Int32" />
+          <Property Name="ubicacion" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="bodega" Relationship="Self.FK_ubicacion" FromRole="Productos" ToRole="bodega" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_cate_prod" FromRole="Productos" ToRole="Categoria" />
+          <NavigationProperty Name="detalle_productos" Relationship="Self.FK_id_product" FromRole="Productos" ToRole="detalle_productos" />
+          <NavigationProperty Name="estado1" Relationship="Self.FK_estado" FromRole="Productos" ToRole="estado" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK_id_prov2" FromRole="Productos" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Proveedor" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Contacto" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="correo2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_id_prov2" FromRole="Proveedores" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Usuario1" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.fk_tipo" FromRole="Tipo_Usuario" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Nombre_Usuario" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoU" Type="Int32" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_pedido" FromRole="Usuarios" ToRole="Pedido" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="Self.fk_tipo" FromRole="Usuarios" ToRole="Tipo_Usuario" />
+        </EntityType>
+        <Association Name="FK_Bodega">
+          <End Role="estante" Type="Self.estante" Multiplicity="0..1" />
+          <End Role="bodega" Type="Self.bodega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estante">
+              <PropertyRef Name="id_estante" />
+            </Principal>
+            <Dependent Role="bodega">
+              <PropertyRef Name="id_estante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacion">
+          <End Role="bodega" Type="Self.bodega" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodega">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cate_prod">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_estante_cate">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="estante" Type="Self.estante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="estante">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_det_prod">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="detalle_productos" Type="Self.detalle_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="detalle_productos">
+              <PropertyRef Name="N_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_product">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="detalle_productos" Type="Self.detalle_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalle_productos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_estado">
+          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pedido">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_prov2">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bodega" EntityType="Self.bodega" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="detalle_productos" EntityType="Self.detalle_productos" />
+          <EntitySet Name="estado" EntityType="Self.estado" />
+          <EntitySet Name="estante" EntityType="Self.estante" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Bodega" Association="Self.FK_Bodega">
+            <End Role="estante" EntitySet="estante" />
+            <End Role="bodega" EntitySet="bodega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacion" Association="Self.FK_ubicacion">
+            <End Role="bodega" EntitySet="bodega" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cate_prod" Association="Self.FK_cate_prod">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_estante_cate" Association="Self.FK_estante_cate">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="estante" EntitySet="estante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_det_prod" Association="Self.FK_id_det_prod">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="detalle_productos" EntitySet="detalle_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_product" Association="Self.FK_id_product">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="detalle_productos" EntitySet="detalle_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_estado" Association="Self.FK_estado">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pedido" Association="Self.FK_pedido">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_prov2" Association="Self.FK_id_prov2">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo" Association="Self.fk_tipo">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+          <EntitySetMapping Name="bodega">
+            <EntityTypeMapping TypeName="inventarioModel.bodega">
+              <MappingFragment StoreEntitySet="bodega">
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="Nombre_Bodega" ColumnName="Nombre_Bodega" />
+                <ScalarProperty Name="id_estante" ColumnName="id_estante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="inventarioModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="Nombre_categoria" ColumnName="Nombre_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalle_productos">
+            <EntityTypeMapping TypeName="inventarioModel.detalle_productos">
+              <MappingFragment StoreEntitySet="detalle_productos">
+                <ScalarProperty Name="id_detalle_producto" ColumnName="id_detalle_producto" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="Nombre_producto" ColumnName="Nombre_producto" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Precio_venta" ColumnName="Precio_venta" />
+                <ScalarProperty Name="Precio_compra" ColumnName="Precio_compra" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="N_pedido" ColumnName="N_pedido" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado">
+            <EntityTypeMapping TypeName="inventarioModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Estado1" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estante">
+            <EntityTypeMapping TypeName="inventarioModel.estante">
+              <MappingFragment StoreEntitySet="estante">
+                <ScalarProperty Name="id_estante" ColumnName="id_estante" />
+                <ScalarProperty Name="n_estante" ColumnName="n_estante" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="inventarioModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="fecha_corte" ColumnName="fecha_corte" />
+                <ScalarProperty Name="fecha_facturacion" ColumnName="fecha_facturacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="inventarioModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="Nombre_producto" ColumnName="Nombre_producto" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Precio_venta" ColumnName="Precio_venta" />
+                <ScalarProperty Name="Precio_compra" ColumnName="Precio_compra" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="N_pedido" ColumnName="N_pedido" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="inventarioModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="Nombre_Proveedor" ColumnName="Nombre_Proveedor" />
+                <ScalarProperty Name="Nombre_Contacto" ColumnName="Nombre_Contacto" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+                <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+                <ScalarProperty Name="correo1" ColumnName="correo1" />
+                <ScalarProperty Name="correo2" ColumnName="correo2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Usuario">
+            <EntityTypeMapping TypeName="inventarioModel.Tipo_Usuario">
+              <MappingFragment StoreEntitySet="Tipo_Usuario">
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+                <ScalarProperty Name="Tipo_Usuario1" ColumnName="Tipo_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="inventarioModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="TipoU" ColumnName="TipoU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Proyecto.bodega>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bodega</h2>
+
+<p>
+    @Html.ActionLink("Agregar Bodega", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre de Bodega
+        </th>
+        <th>
+            Numero de estante
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Bodega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estante.n_estante)
+        </td>
+        <td>
+            @Html.ActionLink("Editar Bodega", "Edit", new { id=item.id_bodega }) |
+            @Html.ActionLink("Detalle de Bodega", "Details", new { id=item.id_bodega }) |
+            @Html.ActionLink("Eliminar Bodega", "Delete", new { id=item.id_bodega })
+        </td>
+    </tr>
+}
+
+</table>

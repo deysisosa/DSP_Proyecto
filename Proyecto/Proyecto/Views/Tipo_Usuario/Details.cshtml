@@ -1,0 +1,26 @@
+﻿@model Proyecto.Tipo_Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle de Tipo de Usuario</h2>
+
+<div>
+    <h4>Tipo de Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Tipo de Usuario")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Usuario1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Tipo de Usuario", "Edit", new { id = Model.id_tipo }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

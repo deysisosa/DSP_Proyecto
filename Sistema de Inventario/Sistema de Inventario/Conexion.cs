@@ -10,7 +10,7 @@ namespace Sistema_de_Inventario
 {
     class Conexion
     {
-        SqlConnection conexion = new SqlConnection("Server=LENOVO\\SQL ; database=inventario ; integrated security = true");
+        SqlConnection conexion = new SqlConnection("Server=DESKTOP-L0KSVS4 ; database=inventario ; integrated security = true");
 
         public void conectar()
         {

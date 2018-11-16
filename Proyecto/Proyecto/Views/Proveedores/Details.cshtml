@@ -1,0 +1,74 @@
+﻿@model Proyecto.Proveedores
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Proveedores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nombre de Proveedor")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Proveedor)
+        </dd>
+
+        <dt>
+            @Html.Label("Contacto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Contacto)
+        </dd>
+
+        <dt>
+            @Html.Label("Pais")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.Label("Telefono 1")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono1)
+        </dd>
+
+        <dt>
+            @Html.Label("Telefono 2")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono2)
+        </dd>
+
+        <dt>
+            @Html.Label("Correo 1")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo1)
+        </dd>
+
+        <dt>
+            @Html.Label("Correo 2")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo2)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Proveedor", "Edit", new { id = Model.id_proveedor }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

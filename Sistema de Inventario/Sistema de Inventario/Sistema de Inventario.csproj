@@ -109,18 +109,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearU.resx">
       <DependentUpon>CrearU.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CrearU3.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Estantes.resx">
       <DependentUpon>Estantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Inicio2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel_Control.resx">
       <DependentUpon>Panel_Control.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Panel_Control2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>

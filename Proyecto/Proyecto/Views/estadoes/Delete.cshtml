@@ -1,0 +1,32 @@
+﻿@model Proyecto.estado
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Estado</h2>
+
+<h3>Estás seguro que quieres eliminar esto?</h3>
+<div>
+    <h4>estado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Estado" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

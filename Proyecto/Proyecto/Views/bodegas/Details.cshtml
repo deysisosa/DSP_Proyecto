@@ -1,0 +1,34 @@
+﻿@model Proyecto.bodega
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle de Bodega</h2>
+
+<div>
+    <h4>bodega</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nombre de Bodega:", htmlAttributes: new { @class = "control-label col-md-2" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Bodega)
+        </dd>
+
+        <dt>
+            @Html.Label("Numero de Estante:", htmlAttributes: new { @class = "control-label col-md-2" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estante.n_estante)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Ediar Bodega", "Edit", new { id = Model.id_bodega }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
